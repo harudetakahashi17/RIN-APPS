@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">RIN-App</string>
+
+    <string-array name="Salpen">
+        <item>NOK</item>
+        <item>OK</item>
+    </string-array>
+
+    <string-array name="Keterangan">
+        <item>Kendala</item>
+        <item>Cancel</item>
+        <item>ODP Full</item>
+
+    </string-array>
+
+    <string name="namTempat">Nama Tempat :</string>
+    <string name="alamat">Alamat :</string>
+    <string name="nmTeknisi">Nama Teknisi :</string>
+    <string name="CP">Contact Person :</string>
+    <string name="ODP">ODP ONDESK :</string>
+    <string name="tgl">Tanggal Laporan (DD/MM/YYYY) :</string>
+    <string name="salpen">Salpen :</string>
+    <string name="ket">Keterangan :</string>
+    <string name="detail">Detail :</string>
+    <string name="btnSave">SAVE</string>
+</resources>
