@@ -23,4 +23,5 @@
     <string name="ket">Keterangan :</string>
     <string name="detail">Detail :</string>
     <string name="btnSave">SAVE</string>
+    <string name="btnExport">Export Data</string>
 </resources>
