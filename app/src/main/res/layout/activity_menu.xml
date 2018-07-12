@@ -1,9 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     tools:context=".MenuActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/people"
+            android:text="Input"
+
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bInput"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="6dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_weight="1"
+                android:background="#800000"
+                android:fontFamily="monospace"
+                android:gravity="center_vertical"
+                android:text="I"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="50dp" />
+
+            <Button
+                android:id="@+id/bEkstrak"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:alpha=".60"
+                android:fontFamily="monospace"
+                android:gravity="center_vertical"
+                android:text="E"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="#800000"
+                android:textSize="50dp"
+                android:onClick="dialogExport"/>
+
+        </LinearLayout>
+
+            <ImageView
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:background="@drawable/heding" />
+    </LinearLayout>
+
+</RelativeLayout>
