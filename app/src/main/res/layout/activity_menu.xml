@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Layout for Menu -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,14 +15,11 @@
         android:layout_alignParentTop="true"
         android:orientation="vertical">
 
-
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@drawable/people"
-            android:text="Input"
-
-            />
+            android:text="Input" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,12 +64,13 @@
 
         </LinearLayout>
 
-            <ImageView
-                android:layout_marginTop="25dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom"
-                android:background="@drawable/heding" />
+        <LinearLayout
+            android:layout_marginTop="35dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_gradient" >
+        </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>
