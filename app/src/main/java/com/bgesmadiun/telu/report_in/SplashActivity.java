@@ -15,7 +15,10 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
+                    // Wait for 3 Sec
                     sleep(3000);
+
+                    // Moving to MenuActivity
                     Intent intent = new Intent (getApplicationContext(),MenuActivity.class);
                     startActivity(intent);
                     finish();

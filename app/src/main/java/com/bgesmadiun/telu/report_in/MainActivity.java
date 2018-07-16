@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnCal, btnSave;
     int years,months, days;
+    // Give a final static in for Calendar pop-up dialog
     static final int DIALOGCAL_ID = 0;
     FirebaseFirestore db;
 
@@ -39,19 +40,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Initalize db to store data
         db = FirebaseFirestore.getInstance();
+
+        // Spinner similar to drop down menu in Web
         Spinner SPsalpen = findViewById(R.id.SPsalpen);
         Spinner SPketerangan = findViewById(R.id.SPketerangan);
 
+        // List for Spinner Salpen
         ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Salpen));
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         SPsalpen.setAdapter(myAdapter);
 
+        // List for Spinner Keterangan
         ArrayAdapter<String> myAdapter2 = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Keterangan));
         myAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         SPketerangan.setAdapter(myAdapter2);
 
+        // Initialize calender to present date and time
         final Calendar cal = Calendar.getInstance();
+
+        // Split date, month, year
         years = cal.get(Calendar.YEAR);
         months = cal.get(Calendar.MONTH);
         days = cal.get(Calendar.DAY_OF_MONTH);
@@ -80,18 +89,21 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
             years = year;
+            // Inital month always 0 - 11
             months = month + 1;
             days = dayOfMonth;
 
             TextView d = findViewById(R.id.TVdate);
             TextView m = findViewById(R.id.TVmonth);
             TextView y = findViewById(R.id.TVyears);
+
             d.setText(new StringBuilder().append(days));
             m.setText(new StringBuilder().append(months));
             y.setText(new StringBuilder().append(years));
         }
     };
 
+    // Pop-up dialog to confirm save
     public void dialogSave (View view){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setTitle("Konfirmasi");
@@ -102,9 +114,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String nmTempat = "",alamat = "",nmTeknisi = "",cp = "",odp,salpen,keterangan,detail;
+
+                // Counter for confirm that all EditText field is filled
                 int c = 0;
 
                 final EditText etNamaTempat = findViewById(R.id.ETnama_tempat);
+
+                // All required field has Counter c + 1
                 if (TextUtils.isEmpty(etNamaTempat.getText())){
                     etNamaTempat.setError("Nama Tempat Kosong");
                 }else {
@@ -151,14 +167,9 @@ public class MainActivity extends AppCompatActivity {
                 final EditText etDetail = findViewById(R.id.ETdetails);
                 detail = etDetail.getText().toString();
 
-
-                System.out.println(nmTempat + " " + alamat + " " + nmTeknisi + " " + cp + " " + odp + " " +
-                        tglLaporan + " " + salpen + " " + keterangan + " " + detail);
-
-
-
                 // Resetting Form
                 if (c == 4){
+                    // Make a new HashMap to store data to FireStore
                     Map<String, String> datas = new HashMap<>();
                     datas.put("Nama Tempat", nmTempat);
                     datas.put("Alamat", alamat);
@@ -170,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
                     datas.put("Keterangan", keterangan);
                     datas.put("Detail", detail);
 
+                    // Uploading data to FireStore
                     db.collection("input_kendala").add(datas).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
@@ -184,10 +196,12 @@ public class MainActivity extends AppCompatActivity {
                     });
 
                     try {
+                        // Wait for 1.5 sec to input new data
                         Thread.sleep(1500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+                    // Hard reseting activity
                     finish();
                     startActivity(new Intent(MainActivity.this, MainActivity.class));
                 } else {
@@ -207,6 +221,4 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
-
-
 }
